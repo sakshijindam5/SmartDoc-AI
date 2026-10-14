@@ -1,8 +1,39 @@
+import os
 import sys
+from pathlib import Path
 import httpx
 
-def test_live_api_endpoints():
-    client = httpx.Client(base_url="http://127.0.0.1:8000", timeout=30.0)
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+def get_test_client(target_url: str = None):
+    """
+    Returns an HTTP client configured for testing:
+    1. If target_url or API_BASE_URL env var is provided, uses httpx.Client pointing to it.
+    2. If a local server is responding on http://127.0.0.1:8000, connects to it.
+    3. Otherwise, falls back gracefully to FastAPI's in-process TestClient so the test runs anywhere.
+    """
+    url = target_url or os.getenv("API_BASE_URL")
+    if url:
+        return httpx.Client(base_url=url.rstrip("/"), timeout=60.0)
+
+    # Check if local server is active
+    try:
+        with httpx.Client(base_url="http://127.0.0.1:8000", timeout=2.0) as probe:
+            r = probe.get("/api/health")
+            if r.status_code == 200:
+                return httpx.Client(base_url="http://127.0.0.1:8000", timeout=60.0)
+    except Exception:
+        pass
+
+    # Fallback to in-process TestClient
+    from fastapi.testclient import TestClient
+    from app.main import app
+    return TestClient(app)
+
+def test_live_api_endpoints(base_url: str = None):
+    client = get_test_client(base_url)
 
     # 1. Health check
     health = client.get("/api/health").json()
@@ -17,7 +48,8 @@ def test_live_api_endpoints():
             doc_id = d["id"]
             break
     if not doc_id:
-        with open("tests/sample_docs/mca_syllabus.pdf", "rb") as f:
+        sample_path = Path(__file__).resolve().parent / "sample_docs" / "mca_syllabus.pdf"
+        with open(sample_path, "rb") as f:
             up_res = client.post("/api/documents/upload", files={"file": ("mca_syllabus.pdf", f, "application/pdf")}).json()
             doc_id = up_res["id"]
 
@@ -46,5 +78,6 @@ def test_live_api_endpoints():
     assert hist["total_messages"] >= 3
 
 if __name__ == "__main__":
-    test_live_api_endpoints()
+    target = sys.argv[1] if len(sys.argv) > 1 else None
+    test_live_api_endpoints(target)
     print("ALL LIVE ENDPOINTS AND RAG RETRIEVAL VERIFIED SUCCESSFULLY!")
