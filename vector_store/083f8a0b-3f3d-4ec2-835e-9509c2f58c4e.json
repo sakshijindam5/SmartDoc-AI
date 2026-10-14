@@ -1,0 +1,37 @@
+{
+  "document_id": "083f8a0b-3f3d-4ec2-835e-9509c2f58c4e",
+  "total_chunks": 5,
+  "chunks": [
+    {
+      "chunk_id": 0,
+      "page_number": 1,
+      "text": "Master of Computer Applications (MCA) - Final Year Syllabus\nCourse Code: MCA-501: Advanced Cloud Computing and Distributed Systems\nAcademic Year: 2026-2027\nUnit 1: Distributed Architecture Fundamentals\nDistributed computing enables disparate machines to coordinate over a computer network. The primary objectives of distributed systems are scalability, fault tolerance, and transparency.",
+      "char_count": 387
+    },
+    {
+      "chunk_id": 1,
+      "page_number": 1,
+      "text": "k. The primary objectives of distributed systems are scalability, fault tolerance, and transparency. Consensus algorithms like Raft and Paxos ensure synchronized state machine replication across distributed nod\nIn Raft, leader election is triggered via randomized election timeouts ranging between 150ms and 300ms. Distributed hash tables (DHT) like Chord utilize consistent hashing with SHA-1 to map keys to nodes efficiently.",
+      "char_count": 427
+    },
+    {
+      "chunk_id": 2,
+      "page_number": 2,
+      "text": "Unit 2: Microservices and Storage Systems\nMicroservices architecture decomposes monolithic applications into independent, loosely coupled services. Communication between microservices typically uses gRPC for high performance internal RPC or RESTful HTTP\nCAP theorem proves that a distributed database can only provide at most two out of three guarantees:\nConsistency, Availability, and Partition Tolerance.",
+      "char_count": 406
+    },
+    {
+      "chunk_id": 3,
+      "page_number": 2,
+      "text": "nly provide at most two out of three guarantees:\nConsistency, Availability, and Partition Tolerance. NoSQL databases such as Apache Cassandra prioritize Availability and Partition Tolerance (AP systems),\nutilizing eventual consistency with tunable read and write consistency levels.",
+      "char_count": 282
+    },
+    {
+      "chunk_id": 4,
+      "page_number": 3,
+      "text": "Unit 3: Final Examination Criteria and Project Grading\nFinal project assessment comprises 100 total marks broken into three components:\n1. System Architecture and Implementation Quality: 50 Marks\n2. Automated Test Suite and Code Documentation: 25 Marks\n3. Viva Voce and Live Demonstration: 25 Marks\nMinimum passing grade is 50% aggregate score. Plagiarism exceeding 15% results in immediate disqualification\nFinal project reports must be submitted in IEEE conference format before December 15th.",
+      "char_count": 495
+    }
+  ],
+  "has_embeddings": true
+}

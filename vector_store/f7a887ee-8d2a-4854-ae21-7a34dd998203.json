@@ -1,0 +1,79 @@
+{
+  "document_id": "f7a887ee-8d2a-4854-ae21-7a34dd998203",
+  "total_chunks": 12,
+  "chunks": [
+    {
+      "chunk_id": 0,
+      "page_number": 1,
+      "text": "Sakshi Jindam\nsakshijindam17@gmail.com\n | +91-9309033661\n | Solapur, Maharashtra\n \nSUMMARY\nFull Stack Developer with 2 years of experience working with PHP, MySQL, JavaScript, REST APIs, and Postman. Experienced in \nbuilding and maintaining web applications, including live client projects, a school website, and an e-commerce platform. Also \nskilled in Python, Excel, SQL, and Power BI for data analysis and visualization.",
+      "char_count": 423
+    },
+    {
+      "chunk_id": 1,
+      "page_number": 1,
+      "text": "rce platform. Also \nskilled in Python, Excel, SQL, and Power BI for data analysis and visualization. Strong problem-solving skills with knowledge of \ndatabase management, web technologies, and data visualization. WORK EXPERIENCE\nNewSoft Solutions Pvt.",
+      "char_count": 251
+    },
+    {
+      "chunk_id": 2,
+      "page_number": 1,
+      "text": "atabase management, web technologies, and data visualization. WORK EXPERIENCE\nNewSoft Solutions Pvt. Ltd., Full Stack Developer\n09/2024 – 09/2026 | Solapur, Maharashtra\n•Worked for 2 years as a full stack developer, building forms, modules, and features for multiple live client projects using PHP, \nMySQL, JavaScript, jQuery, HTML, CSS, and Bootstrap. •Designed responsive web pages and added interactive features like menus, forms, pop-ups, and client-side validation.",
+      "char_count": 470
+    },
+    {
+      "chunk_id": 3,
+      "page_number": 1,
+      "text": "ive web pages and added interactive features like menus, forms, pop-ups, and client-side validation. •Developed backend functions in PHP for data submission, form handling, and database operations, and managed MySQL \ndatabases for student and employee records. •Created REST APIs in PHP for application features and tested them using Postman. •Created admin panels and dashboards to manage and view data.",
+      "char_count": 404
+    },
+    {
+      "chunk_id": 4,
+      "page_number": 1,
+      "text": "eatures and tested them using Postman. •Created admin panels and dashboards to manage and view data. •Tested and debugged features, and worked with senior developers to improve the UI and performance. •Harit Dharashiv (MyTrees): Worked on the volunteer application and admin management system for the Dharashiv district \ntree plantation drive on 15 August, which set a Guinness World Record.",
+      "char_count": 391
+    },
+    {
+      "chunk_id": 5,
+      "page_number": 1,
+      "text": "m for the Dharashiv district \ntree plantation drive on 15 August, which set a Guinness World Record. •Developed the volunteer application with login and registration, where volunteers log in on plantation day, scan QR codes, and \nrecord the trees they plant. •Built the admin management dashboard with volunteer records and a progress tracker to follow planting by site and volunteer. •Developed the \"Assign\" feature, which lets the admin randomly assign sites to volunteers with one click.",
+      "char_count": 490
+    },
+    {
+      "chunk_id": 6,
+      "page_number": 1,
+      "text": "loped the \"Assign\" feature, which lets the admin randomly assign sites to volunteers with one click. •Diet Shastra: Worked on a diet and nutrition web application where users can register, log in, and buy diet packages directly \nfrom the app. •Built a daily food delivery log so customers can track the meals delivered each day. •Added features for users to manage their delivery addresses and check their appointments. EDUCATION\nBCA, D.A.V.",
+      "char_count": 441
+    },
+    {
+      "chunk_id": 7,
+      "page_number": 1,
+      "text": "res for users to manage their delivery addresses and check their appointments. EDUCATION\nBCA, D.A.V. Velankar College of Commerce, Solapur\n2024–25\n8.51 CGPA\nHSC, D.A.V. Velankar College of Commerce, Solapur\n2021–22\nPercentage: 78%\nSSC, Shri D.J.",
+      "char_count": 245
+    },
+    {
+      "chunk_id": 8,
+      "page_number": 1,
+      "text": "5\n8.51 CGPA\nHSC, D.A.V. Velankar College of Commerce, Solapur\n2021–22\nPercentage: 78%\nSSC, Shri D.J. Gurukul High School, Solapur\n2019–20\nPercentage: 71%\nTECHNICAL SKILLS\nProgramming Languages\nC, Python\nWeb Technologies\nHTML5, CSS3, JavaScript, \nBootstrap5, PHP, AJAX, \njQuery, REST APIs\nDatabase\nSQL\nTools & Analytics\nExcel, Power BI, VS Code, \nGitHub, Postman\nCERTIFICATIONS\nCSS, JavaScript And PHP \nComplete Course For \nBeginners\nUdemy\nWeb Development and \nDesigning\nOASIS INFOBYTE\nData Analytics Job \nSimulation\nDeloitte\nPROJECTS\nHandCraft Store Website⁠\n•Built an e-commerce platform using PHP, MySQL, JavaScript, jQuery, HTML, CSS, and Bootstrap.",
+      "char_count": 652
+    },
+    {
+      "chunk_id": 9,
+      "page_number": 1,
+      "text": "bsite⁠\n•Built an e-commerce platform using PHP, MySQL, JavaScript, jQuery, HTML, CSS, and Bootstrap. •Developed customer and admin modules with authentication. •Implemented product catalog, shopping cart, order management, and order history features. •Created a dynamic admin dashboard for managing products and customer orders. Global English Medium School (GEMS) Website⁠\n•Developed and maintained a responsive school website using PHP, MySQL, HTML5, CSS3, JavaScript and Bootstrap 5.",
+      "char_count": 486
+    },
+    {
+      "chunk_id": 10,
+      "page_number": 1,
+      "text": "nd maintained a responsive school website using PHP, MySQL, HTML5, CSS3, JavaScript and Bootstrap 5. •Built dynamic pages and an admin panel for managing website content. •Implemented database-driven functionality, authentication, contact forms, and content management features. •Focused on responsive UI, SEO, website security, and performance. •Integrated modern UI effects and interactive components using JavaScript, AJAX, and GSAP.",
+      "char_count": 436
+    },
+    {
+      "chunk_id": 11,
+      "page_number": 1,
+      "text": "formance. •Integrated modern UI effects and interactive components using JavaScript, AJAX, and GSAP. Coffee Shop Sales Analysis\n•Analyzed coffee shop sales data using MySQL and Power BI. •Cleaned and prepared raw data in MySQL, and wrote SQL queries to calculate sales, orders, and growth trends. •Analyzed sales by month, store location, product category, and weekdays vs. weekends. •Built an interactive Power BI dashboard with KPIs, filters, and charts to present business insights.",
+      "char_count": 485
+    }
+  ],
+  "has_embeddings": true
+}

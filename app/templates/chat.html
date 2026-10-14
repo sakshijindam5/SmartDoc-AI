@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom Modern Styles -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="chat-page-body">
+
+  <!-- Simple & Clean Top Navigation -->
+  <nav class="navbar navbar-expand navbar-light bg-white border-bottom py-2 px-3 sticky-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      
+      <!-- Left: Back & Doc Info -->
+      <div class="d-flex align-items-center gap-2">
+        <a href="/" class="btn btn-sm btn-light border d-flex align-items-center gap-1 rounded-pill px-3 text-secondary" title="Return to Dashboard">
+          <i class="bi bi-arrow-left"></i> <span class="d-none d-sm-inline">Back</span>
+        </a>
+        <div class="vr mx-1 d-none d-sm-block"></div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="badge-doc-icon">
+            <i class="bi bi-file-earmark-pdf-fill"></i>
+          </div>
+          <div>
+            <h6 class="mb-0 fw-bold text-dark text-truncate" style="max-width: 280px;" title="{{ document.filename }}">
+              {{ document.filename }}
+            </h6>
+            <div class="text-muted" style="font-size: 0.72rem;">
+              {{ document.page_count }} Pages
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Language Pills & Controls -->
+      <div class="d-flex align-items-center gap-2">
+        <!-- Language Selector -->
+        <div class="btn-group btn-group-sm rounded-pill p-1 bg-light border" role="group">
+          <button type="button" class="btn btn-sm rounded-pill px-2 py-1 active" id="lang-en" onclick="setLanguage('en')">
+            English
+          </button>
+          <button type="button" class="btn btn-sm rounded-pill px-2 py-1" id="lang-hi" onclick="setLanguage('hi')">
+            हिन्दी
+          </button>
+          <button type="button" class="btn btn-sm rounded-pill px-2 py-1" id="lang-mr" onclick="setLanguage('mr')">
+            मराठी
+          </button>
+        </div>
+
+        <!-- View PDF -->
+        <a href="/api/documents/{{ document.id }}/file" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-2 d-none d-md-inline-flex align-items-center gap-1" title="View Original PDF">
+          <i class="bi bi-eye"></i> View PDF
+        </a>
+
+        <!-- New Chat -->
+        <button class="btn btn-sm btn-outline-primary rounded-pill px-3 d-flex align-items-center gap-1" onclick="startNewConversation()" title="Clear and Start Fresh">
+          <i class="bi bi-plus-lg"></i> <span class="d-none d-sm-inline">New Chat</span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Easy & Clean Chat Workspace -->
+  <div class="chat-workspace">
+    <div class="chat-stream-container">
+      
+      <!-- Messages List -->
+      <div class="chat-stream" id="chatMessages">
+
+        <!-- Welcoming Initial Screen with Instant Prompt Buttons -->
+        <div class="welcome-card text-center my-auto py-4" id="welcomeChatBanner">
+          <div class="avatar-robot mb-3">
+            <i class="bi bi-robot"></i>
+          </div>
+          <h4 class="fw-bold text-dark mb-1">SmartDoc AI Assistant</h4>
+          <p class="text-muted small mx-auto mb-4" style="max-width: 480px;">
+            Ask any question about <strong>{{ document.filename }}</strong>. 
+            Click any topic below or type your question:
+          </p>
+
+          <!-- Easy One-Click Suggested Questions Grid -->
+          <div class="row g-2 justify-content-center mx-auto" style="max-width: 560px;">
+            <div class="col-sm-6">
+              <button class="quick-prompt-btn w-100" onclick="askQuickPrompt('Summarize the key points of this document.')">
+                <span class="prompt-icon">📋</span>
+                <span class="prompt-title">Summary</span>
+                <span class="prompt-sub">Get a concise overview of key points</span>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button class="quick-prompt-btn w-100" onclick="askQuickPrompt('What are the main topics and concepts covered in this document?')">
+                <span class="prompt-icon">🔍</span>
+                <span class="prompt-title">Main Topics</span>
+                <span class="prompt-sub">Explore key subjects and themes</span>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button class="quick-prompt-btn w-100" onclick="askQuickPrompt('What are the most important takeaways and highlights?')">
+                <span class="prompt-icon">💡</span>
+                <span class="prompt-title">Key Highlights</span>
+                <span class="prompt-sub">Extract vital facts and conclusions</span>
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button class="quick-prompt-btn w-100" onclick="askQuickPrompt('What are the important dates, numbers, or rules mentioned?')">
+                <span class="prompt-icon">📊</span>
+                <span class="prompt-title">Key Details</span>
+                <span class="prompt-sub">Find specific numbers and guidelines</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Thinking Indicator -->
+      <div id="searchingIndicator" class="searching-bar d-none">
+        <div class="typing-indicator">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="small text-muted ms-2">Finding answer in document...</span>
+      </div>
+
+    </div>
+
+    <!-- Floating Clean Input Bar -->
+    <div class="chat-input-wrapper">
+      <div class="chat-input-box">
+        <form id="chatForm" onsubmit="handleQuestionSubmit(event)" class="w-100 d-flex align-items-center">
+          <input
+            type="text"
+            id="questionInput"
+            class="form-control simple-chat-input"
+            placeholder="Ask anything about this document... (Press Enter to send)"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="btn btn-primary simple-send-btn ms-2" id="sendBtn" title="Send Question">
+            <i class="bi bi-arrow-up-circle-fill fs-5"></i>
+          </button>
+        </form>
+      </div>
+      <div class="text-center text-muted mt-1" style="font-size: 0.72rem;">
+        SmartDoc AI answers strictly from your document with verified page citations.
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Values for JS -->
+  <input type="hidden" id="currentDocId" value="{{ document.id }}">
+  <input type="hidden" id="currentDocName" value="{{ document.filename }}">
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Simple & Easy Chat Script -->
+  <script src="/static/js/chat.js"></script>
+</body>
+</html>

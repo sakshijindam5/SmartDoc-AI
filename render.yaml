@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: smartdoc-ai
+    env: python
+    region: oregon
+    plan: standard
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DEBUG
+        value: "False"
+      - key: LLM_PROVIDER
+        value: "extractive"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        value: "sqlite:///./data/smartdoc.db"
+      - key: UPLOAD_DIR
+        value: "./data/uploads"
+      - key: VECTOR_STORE_DIR
+        value: "./data/vector_store"
+    disk:
+      name: smartdoc-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 5
